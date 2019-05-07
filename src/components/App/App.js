@@ -33,9 +33,10 @@ class App extends React.Component {
   //   })
   // }
 
-  // clickForFresh = (event) => {
-  //   console.log('clickForFresh: ', event.target);
-  // }
+  // Being passed to our Person component responding to button click
+  clickForFresh = (event) => {
+    console.log('clickForFresh: ', event.target);
+  }
 
   addMoreUserNames = (event) => {
     const newUser = this.state.user;
@@ -48,6 +49,7 @@ class App extends React.Component {
     });
   }
 
+  // Single change event handler that replaces this.changeFreshness and this.changeUser
   changeUserValue = (event) => {
     const valueType = event.target.dataset.type;
     const newValue = event.target.value;
@@ -55,15 +57,16 @@ class App extends React.Component {
     console.log('newValue', newValue);
 
     console.log('state object', {
+      // when using a string value for an Object property Key we use []
       [valueType]: newValue
     });
-    
     
     this.setState({
       [valueType]: newValue
     });
   }
 
+  // EVERY COMPONENT MUST HAVE render method
   render() {
     // DON'T WORRY ABOUT THIS
     const peopleComponents = this.state.users.map((userData, userIdx) => {
